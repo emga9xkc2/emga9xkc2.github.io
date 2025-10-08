@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <title>Xáo trộn thứ tự dòng</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f3f4f6;
+      padding: 30px;
+    }
+    h1 { font-size: 20px; margin-bottom: 10px; }
+    textarea {
+      width: 100%;
+      min-height: 160px;
+      padding: 10px;
+      font-family: monospace;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      resize: vertical;
+    }
+    #output {
+      white-space: pre-wrap;
+      background: #fff;
+      border: 1px solid #ccc;
+      padding: 10px;
+      min-height: 160px;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+    button {
+      margin-top: 10px;
+      padding: 8px 14px;
+      cursor: pointer;
+      border: none;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+    #shuffleBtn { background: #2563eb; color: white; }
+    #copyBtn { background: #10b981; color: white; margin-left: 6px; }
+  </style>
+</head>
+<body>
+  <h1>Xáo trộn thứ tự dòng</h1>
+
+  <textarea id="input" placeholder="Nhập nhiều dòng vào đây..."></textarea><br>
+  <button id="shuffleBtn">Xáo trộn dòng</button>
+  <button id="copyBtn">Copy kết quả</button>
+
+  <h3>Kết quả:</h3>
+  <pre id="output"></pre>
+
+  <script>
+    function shuffleArray(arr) {
+      // Thuật toán Fisher-Yates
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    }
+
+    document.getElementById('shuffleBtn').addEventListener('click', () => {
+      const input = document.getElementById('input').value.trim();
+      if (!input) {
+        alert('Vui lòng nhập nội dung trước.');
+        return;
+      }
+      const lines = input.split(/\r?\n/).filter(line => line.trim() !== '');
+      const shuffled = shuffleArray([...lines]);
+      const result = shuffled.join('\n');
+      document.getElementById('output').textContent = result;
+    });
+
+    document.getElementById('copyBtn').addEventListener('click', async () => {
+      const result = document.getElementById('output').textContent;
+      if (!result) {
+        alert('Không có gì để copy.');
+        return;
+      }
+      try {
+        await navigator.clipboard.writeText(result);
+        const btn = document.getElementById('copyBtn');
+        const old = btn.textContent;
+        btn.textContent = 'Đã copy ✓';
+        setTimeout(() => btn.textContent = old, 1500);
+      } catch (e) {
+        alert('Trình duyệt không cho phép copy tự động.');
+      }
+    });
+  </script>
+</body>
+</html>

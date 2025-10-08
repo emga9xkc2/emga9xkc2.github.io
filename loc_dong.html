@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Lọc dòng chính xác theo chuỗi</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    textarea, input {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 8px;
+      font-size: 14px;
+    }
+    button {
+      padding: 8px 16px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h2>Lọc dòng chính xác theo chuỗi</h2>
+
+  <!-- Ô nhập nhiều dòng -->
+  <label for="inputText">Nội dung nhiều dòng:</label><br>
+  <textarea id="inputText" rows="6" placeholder="Nhập nhiều dòng tại đây..."></textarea><br>
+
+  <!-- Ô nhập chuỗi -->
+  <label for="filterStr">Chuỗi cần lọc:</label><br>
+  <input type="text" id="filterStr" placeholder="Nhập chuỗi cần lọc (có thể gồm khoảng trắng hoặc tab)"><br>
+
+  <!-- Nút lọc -->
+  <button onclick="filterLines()">Lọc</button><br><br>
+
+  <!-- Ô xuất kết quả -->
+  <label for="outputText">Kết quả:</label><br>
+  <textarea id="outputText" rows="6" readonly placeholder="Kết quả sẽ hiển thị ở đây..."></textarea>
+
+  <script>
+    function filterLines() {
+      const inputText = document.getElementById("inputText").value;
+      const filterStr = document.getElementById("filterStr").value; // KHÔNG trim để giữ nguyên tab/khoảng trắng
+      const output = document.getElementById("outputText");
+
+      if (!filterStr) {
+        output.value = "Vui lòng nhập chuỗi cần lọc!";
+        return;
+      }
+
+      // Tách từng dòng
+      const lines = inputText.split(/\r?\n/);
+
+      // Lọc những dòng chứa chuỗi nhập vào (giữ nguyên chuỗi kể cả tab/space)
+      const filtered = lines.filter(line => line.indexOf(filterStr) !== -1);
+
+      // Xuất kết quả
+      output.value = filtered.join("\n");
+    }
+  </script>
+</body>
+</html>

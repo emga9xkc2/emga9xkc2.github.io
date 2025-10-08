@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Bộ lọc dữ liệu trùng</title>
+  <style>
+    :root{--bg:#0f1724;--card:#0b1220;--muted:#94a3b8;--accent:#60a5fa}
+    *{box-sizing:border-box;font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial}
+    body{margin:20px;background:linear-gradient(180deg,#071029 0%, #0b1320 100%);color:#e6eef8}
+    .wrap{max-width:1100px;margin:0 auto}
+    header{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+    h1{font-size:20px;margin:0}
+    p.lead{color:var(--muted);margin:0}
+    .grid{display:grid;grid-template-columns:1fr 360px;gap:16px;margin-top:16px}
+    .card{background:var(--card);padding:14px;border-radius:12px;box-shadow:0 6px 18px rgba(2,6,23,.6)}
+    textarea{width:100%;min-height:260px;background:#021025;border:1px solid rgba(255,255,255,.04);color:inherit;padding:10px;border-radius:8px;resize:vertical}
+    label{display:block;font-size:13px;margin-bottom:6px;color:var(--muted)}
+    .controls{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+    button{background:var(--accent);color:#022;border:none;padding:8px 10px;border-radius:8px;cursor:pointer}
+    button.secondary{background:transparent;border:1px solid rgba(255,255,255,.06);color:var(--muted)}
+    .small{font-size:13px;padding:6px 8px}
+    .outputs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+    .stats{margin-top:12px;color:var(--muted);display:flex;gap:12px;flex-wrap:wrap}
+    .stat{background:rgba(255,255,255,.02);padding:8px 10px;border-radius:8px}
+    .row{display:flex;gap:8px;align-items:center}
+    .right{justify-self:end}
+    .muted{color:var(--muted)}
+    .footer{margin-top:16px;color:var(--muted);font-size:13px}
+    .copyBtn{background:transparent;border:1px solid rgba(255,255,255,.06);padding:6px;border-radius:6px;cursor:pointer}
+    .option{display:flex;align-items:center;gap:8px}
+    input[type=checkbox]{width:16px;height:16px}
+    .duplicate-line{display:flex;justify-content:space-between;gap:8px;padding:6px 8px;border-radius:6px;background:linear-gradient(90deg, rgba(255,255,255,0.01), transparent)}
+    @media (max-width:950px){.grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Bộ lọc dữ liệu trùng</h1>
+      <p class="lead">Dán danh sách (mỗi dòng 1 mục). Tách ra: trùng / không trùng, đếm dòng rỗng.</p>
+    </header>
+
+    <div class="grid">
+      <div class="card">
+        <label for="inputArea">Input (dán vào đây)</label>
+        <textarea id="inputArea" placeholder="Dán dữ liệu ở đây — mỗi dòng 1 mục"></textarea>
+
+        <div class="controls" style="margin-top:10px">
+          <button id="processBtn">Xử lý</button>
+          <button id="clearBtn" class="secondary">Xóa</button>
+          <button id="trimBtn" class="secondary small">Cắt khoảng trắng</button>
+          <div style="flex:1"></div>
+          <div class="option">
+            <input type="checkbox" id="caseSensitive" />
+            <label for="caseSensitive" class="muted">Phân biệt hoa/thường</label>
+          </div>
+          <div class="option">
+            <input type="checkbox" id="showCounts" checked />
+            <label for="showCounts" class="muted">Hiển thị số lần (với trùng)</label>
+          </div>
+        </div>
+
+        <div class="stats" id="stats">
+          <div class="stat">Dòng tổng: <strong id="totalCount">0</strong></div>
+          <div class="stat">Dòng rỗng: <strong id="emptyCount">0</strong></div>
+          <div class="stat">Trùng (số dòng có >1): <strong id="duplicateCount">0</strong></div>
+          <div class="stat">Không trùng: <strong id="uniqueCount">0</strong></div>
+        </div>
+
+        <div class="footer">Gợi ý: Nhấn <kbd>Ctrl+A</kbd> → <kbd>Ctrl+C</kbd> để copy kết quả. Có thể xuất ra file nếu cần.</div>
+      </div>
+
+      <div>
+        <div class="card" style="margin-bottom:12px">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <label for="duplicatesArea">Dữ liệu trùng</label>
+            </div>
+            <div class="row">
+              <button id="copyDup" class="copyBtn">Sao chép</button>
+              <button id="exportDup" class="copyBtn">Xuất .txt</button>
+            </div>
+          </div>
+          <textarea id="duplicatesArea" readonly placeholder="Dữ liệu trùng sẽ hiển thị ở đây"></textarea>
+        </div>
+
+        <div class="card" style="margin-bottom:12px">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <label for="uniqueArea">Dữ liệu không trùng</label>
+            </div>
+            <div class="row">
+              <button id="copyUni" class="copyBtn">Sao chép</button>
+              <button id="exportUni" class="copyBtn">Xuất .txt</button>
+            </div>
+          </div>
+          <textarea id="uniqueArea" readonly placeholder="Dữ liệu không trùng sẽ hiển thị ở đây"></textarea>
+        </div>
+
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <label for="allArea">Dữ liệu tổng hợp (trùng + không trùng, bỏ rỗng)</label>
+            </div>
+            <div class="row">
+              <button id="copyAll" class="copyBtn">Sao chép</button>
+              <button id="exportAll" class="copyBtn">Xuất .txt</button>
+            </div>
+          </div>
+          <textarea id="allArea" readonly placeholder="Tất cả dữ liệu đã lọc (1 dòng 1 mục, không rỗng)"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const inputArea = document.getElementById('inputArea');
+    const processBtn = document.getElementById('processBtn');
+    const clearBtn = document.getElementById('clearBtn');
+    const trimBtn = document.getElementById('trimBtn');
+    const caseSensitive = document.getElementById('caseSensitive');
+    const showCounts = document.getElementById('showCounts');
+
+    const duplicatesArea = document.getElementById('duplicatesArea');
+    const uniqueArea = document.getElementById('uniqueArea');
+    const allArea = document.getElementById('allArea');
+
+    const totalCount = document.getElementById('totalCount');
+    const emptyCount = document.getElementById('emptyCount');
+    const duplicateCount = document.getElementById('duplicateCount');
+    const uniqueCount = document.getElementById('uniqueCount');
+
+    const copyDup = document.getElementById('copyDup');
+    const copyUni = document.getElementById('copyUni');
+    const copyAll = document.getElementById('copyAll');
+    const exportDup = document.getElementById('exportDup');
+    const exportUni = document.getElementById('exportUni');
+    const exportAll = document.getElementById('exportAll');
+
+    function processInput(){
+      const raw = inputArea.value.replace(/\r/g,''); // unify newlines
+      if(raw.length === 0){
+        updateStats(0,0,0,0);
+        duplicatesArea.value = '';
+        uniqueArea.value = '';
+        allArea.value = '';
+        return;
+      }
+
+      const lines = raw.split('\n');
+      const counts = new Map();
+      const firstIndex = new Map();
+      let empties = 0;
+
+      for(let i=0;i<lines.length;i++){
+        let original = lines[i];
+        let key = original;
+        key = key.replace(/^\s+|\s+$/g,'');
+        if(key === ''){ empties++; continue; }
+        if(!caseSensitive.checked) key = key.toLowerCase();
+        counts.set(key, (counts.get(key) || 0) + 1);
+        if(!firstIndex.has(key)) firstIndex.set(key, i);
+      }
+
+      const duplicates = [];
+      const uniques = [];
+
+      const keysInOrder = Array.from(firstIndex.entries()).sort((a,b)=>a[1]-b[1]).map(e=>e[0]);
+      for(const key of keysInOrder){
+        const c = counts.get(key) || 0;
+        if(c > 1) duplicates.push({key,count:c});
+        else uniques.push(key);
+      }
+
+      const showCount = showCounts.checked;
+      const dupText = duplicates.map(d => showCount ? `${d.key}  —  x${d.count}` : d.key).join('\n');
+      const uniText = uniques.join('\n');
+
+      duplicatesArea.value = dupText;
+      uniqueArea.value = uniText;
+      allArea.value = keysInOrder.join('\n');
+
+      updateStats(lines.length, empties, duplicates.length, uniques.length);
+    }
+
+    function updateStats(total, empties, dupLines, uniqueLines){
+      totalCount.textContent = total;
+      emptyCount.textContent = empties;
+      duplicateCount.textContent = dupLines;
+      uniqueCount.textContent = uniqueLines;
+    }
+
+    processBtn.addEventListener('click', processInput);
+    clearBtn.addEventListener('click', ()=>{
+      inputArea.value = '';
+      duplicatesArea.value = '';
+      uniqueArea.value = '';
+      allArea.value = '';
+      updateStats(0,0,0,0);
+    });
+
+    trimBtn.addEventListener('click', ()=>{
+      const raw = inputArea.value.replace(/\r/g,'');
+      const out = raw.split('\n').map(l=>l.trim()).join('\n');
+      inputArea.value = out;
+    });
+
+    copyDup.addEventListener('click', ()=>{
+      navigator.clipboard.writeText(duplicatesArea.value).then(()=>alert('Đã sao chép dữ liệu trùng'));
+    });
+    copyUni.addEventListener('click', ()=>{
+      navigator.clipboard.writeText(uniqueArea.value).then(()=>alert('Đã sao chép dữ liệu không trùng'));
+    });
+    copyAll.addEventListener('click', ()=>{
+      navigator.clipboard.writeText(allArea.value).then(()=>alert('Đã sao chép dữ liệu tổng hợp'));
+    });
+
+    function exportText(filename, text){
+      const blob = new Blob([text], {type: 'text/plain;charset=utf-8'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    }
+
+    exportDup.addEventListener('click', ()=>{
+      exportText('duplicates.txt', duplicatesArea.value);
+    });
+    exportUni.addEventListener('click', ()=>{
+      exportText('unique.txt', uniqueArea.value);
+    });
+    exportAll.addEventListener('click', ()=>{
+      exportText('all_data.txt', allArea.value);
+    });
+
+    inputArea.addEventListener('paste', ()=>{ setTimeout(processInput, 50); });
+
+    inputArea.addEventListener('keydown', (e)=>{
+      if((e.ctrlKey || e.metaKey) && e.key === 'Enter'){
+        processInput();
+      }
+    });
+  </script>
+</body>
+</html>

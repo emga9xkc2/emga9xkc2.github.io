@@ -1,614 +1,91 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Công cụ xử lý văn bản - https://t.me/thoconlonton</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #1e293b;
+      --accent: #60a5fa;
+      --hover: #2563eb;
+      --text: #e2e8f0;
+    }
 
+    * { box-sizing: border-box; }
 
-    <title>toolmmo.pro | Giải pháp cho nhà Quảng Cáo</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+    body {
+      font-family: "Segoe UI", Roboto, Arial, sans-serif;
+      background: radial-gradient(circle at top, #1e293b 0%, #0f172a 80%);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      padding: 20px;
+    }
 
-    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="css/animate.css">
-    
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 24px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #93c5fd;
+    }
 
-    <link rel="stylesheet" href="css/aos.css">
-    <link rel="icon" type="image/ico" sizes="32x32" href="/images/rocket.ico">
-    <link rel="stylesheet" href="css/ionicons.min.css">
+    .container {
+      background: rgba(30, 41, 59, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      padding: 30px 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      text-align: center;
+    }
 
-    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="css/jquery.timepicker.css">
+    a {
+      display: block;
+      margin: 12px 0;
+      padding: 14px 28px;
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--text);
+      background: var(--card);
+      border-radius: 12px;
+      text-decoration: none;
+      box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05);
+      transition: all 0.25s ease;
+    }
 
-    
-    <link rel="stylesheet" href="css/flaticon.css">
-    <link rel="stylesheet" href="css/icomoon.css">
-    <link rel="stylesheet" href="css/style.css">
-  </head>
-  <body>
-    
-  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-    <div class="container">
-      <a class="navbar-brand" href="index.html">toolmmo.pro</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="oi oi-menu"></span> Menu
-      </button>
+    a:hover {
+      background: var(--hover);
+      color: #fff;
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+    }
 
-      <div class="collapse navbar-collapse" id="ftco-nav">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item active"><a href="index.html" class="nav-link">Trang chủ</a></li>
-          <li class="nav-item"><a href="#solution" class="nav-link">Sản phẩm</a></li>
-          <li class="nav-item"><a href="#congdung" class="nav-link">Công dụng</a></li>
-          <li class="nav-item cta"><a href="https://t.me/" target="_blank" class="nav-link"><span>Liên hệ hỗ trợ</span></a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-    <!-- END nav -->
-    
-    <div class="hero-wrap">
-      <div class="overlay"></div>
-      <div class="circle-bg"></div>
-      <div class="circle-bg-2"></div>
-      <div class="container-fluid">
-        <div class="slider-text d-md-flex align-items-center" data-scrollax-parent="true">
+    footer {
+      margin-top: 24px;
+      font-size: 0.9rem;
+      color: #94a3b8;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Trang chính</h1>
 
-          <div class="one-forth pr-md-4 ftco-animate align-self-md-center" data-scrollax=" properties: { translateY: '70%' }">
-          	<h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Marketing 4.0</h1>
-            <p class="mb-md-5 mb-sm-3" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Bộ phần mềm giải pháp hỗ trợ cho nhà Quảng Cáo chuyên nghiệp</p>
-            <p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><a href="#solution" class="btn btn-primary px-4 py-3">Xem toàn bộ</a></p>
-          </div>
-          <div class="one-half align-self-md-end align-self-sm-center">
-          	<div class="item">
-              <img src="images/dashboard_full_2.png" class="img-fluid img"alt="">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    
-  
-    <section class="ftco-section services-section">
-      <div class="container">
-      	<div class="row justify-content-center mb-5 pb-5">
-          <div class="col-md-7 text-center heading-section ftco-animate">
-            
-            <h2 class="mb-4">Tại sao chọn chúng tôi</h2>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-4 d-flex align-self-stretch ftco-animate">
-            <div class="media block-6 services d-block text-center">
-              <div class="d-flex justify-content-center"><div class="icon"><span class="flaticon-guarantee"></span></div></div>
-              <div class="media-body p-2 mt-3">
-                <h3 class="heading">Luôn cập nhật</h3>
-                <p>Chúng tôi luôn lắng nghe, theo dõi và cập nhật kịp thời để đảm bảo trải nghiệm tốt nhất cho người dùng sản phẩm.</p>
-              </div>
-            </div>      
-          </div>
-          <div class="col-md-4 d-flex align-self-stretch ftco-animate">
-            <div class="media block-6 services d-block text-center">
-              <div class="d-flex justify-content-center"><div class="icon"><span class="flaticon-shield"></span></div></div>
-              <div class="media-body p-2 mt-3">
-                <h3 class="heading">Mức độ bảo mật cao</h3>
-                <p>Cam kết không mua bán, trao đổi hay sử dụng vào mục đích thương mại với bất kỳ dữ liệu nào của người dùng.</p>
-              </div>
-            </div>    
-          </div>
-          <div class="col-md-4 d-flex align-self-stretch ftco-animate">
-            <div class="media block-6 services d-block text-center">
-              <div class="d-flex justify-content-center"><div class="icon"><span class="flaticon-support"></span></div></div>
-              <div class="media-body p-2 mt-3">
-                <h3 class="heading">Hỗ trợ & Tư vấn</h3>
-                <p>Luôn sẵn sàng và nhiệt tình là những tiêu chí ưu tiên hàng đầu của đội ngũ CSKH.</p>
-              </div>
-            </div>      
-          </div>
-        </div>
-      </div>
-    </section>
+    <a href="loc_dong.html" target="_blank" rel="noopener noreferrer">Lọc dòng</a>
+    <a href="loc_trung.html" target="_blank" rel="noopener noreferrer">Lọc trùng</a>
+    <a href="xao_tron_dong.html" target="_blank" rel="noopener noreferrer">Xáo trộn dòng</a>
+    <a href="tao_email.html" target="_blank" rel="noopener noreferrer">Tạo email</a>
+    <a href="https://t.me/thoconlonton" target="_blank" rel="noopener noreferrer">Liên hệ - Hỗ trợ</a>
 
-    <section id="solution" class="ftco-section bg-light">
-      <hr>
-    	<div class="container">
-    		<div  class="row justify-content-center mb-5 pb-5">
-          <h2 class="mb-4">Bộ phần mềm giải pháp Quảng Cáo</h2>
-        </div>
-    		<div class="row">
-          <div class="col-md-3 ftco-animate">
-	          <div class="block-7">
-	            <div class="text-center">
-	            <h2 class="heading">Tạo BM 3.9</h2>
-	          
-	            <h3 class="heading-2 mb-3">Bảng giá</h3>
-	            <hr>
-	            <ul class="pricing-text">
-	              <li><strong>1 Tháng:</strong> 1.500.000 <sup>đ</sup></li>
-                <li><strong>3 Tháng:</strong> 3.700.000 <sup>đ</sup></li>
-               
-	            </ul>
-              <hr>
-              <a href="https://fsmua.net/" target="_blank" class="btn btn-primary d-block px-3 py-3 mb-4">Mua ngay</a>
-	            </div>
-              <hr>
-
-              <img src="images\download.png"> <a href="https://1drv.ms/u/c/3c09b97a934d16b2/EeioeWA1TrtBsfQcpdmtqs4BazutjyGZ7DCRqqua-iHdCw?e=Vp0zjP" target="_blank" <strong><span class="subheading">Tải xuống</span></strong>  </a> > 
-              
-	          </div>
-	        </div>
-          <div class="col-md-3 ftco-animate">
-	          <div class="block-7">
-	            <div class="text-center">
-	            <h2 class="heading">Tạo Page 2.8</h2>
-	          
-	            <h3 class="heading-2 mb-3">Bảng giá</h3>
-	            <hr>
-	            <ul class="pricing-text">
-	              <li><strong>1 Tháng:</strong> 1.000.000 <sup>đ</sup></li>
-                <li><strong>3 Tháng:</strong> 2.300.000 <sup>đ</sup></li>
-               
-	            </ul>
-              <hr>
-              <a href="https://fsmua.net/" target="_blank" class="btn btn-primary d-block px-3 py-3 mb-4">Mua ngay</a>
-	            </div>
-              <hr>
-
-              <img src="images\download.png"> <a href="https://1drv.ms/u/c/3c09b97a934d16b2/EXozYMor_mRHk7UfEI0q0-wBTMAUT6_ac08rm1Yyc8pyDA?e=o0YKIk" target="_blank" <strong><span class="subheading">Tải xuống</span></strong>  </a> > 
-              
-	          </div>
-	        </div>
-          <div class="col-md-3 ftco-animate">
-	          <div class="block-7">
-	            <div class="text-center">
-	            <h2 class="heading">Quảng Cáo ADS 2.0</h2>
-	          
-	            <h3 class="heading-2 mb-3">Bảng giá</h3>
-	            <hr>
-	            <ul class="pricing-text">
-	              <li><strong>1 Tháng:</strong> 1.500.000 <sup>đ</sup></li>
-                <li><strong>3 Tháng:</strong> 3.700.000 <sup>đ</sup></li>
-               
-	            </ul>
-              <hr>
-              <a href="https://fsmua.net/" target="_blank" class="btn btn-primary d-block px-3 py-3 mb-4">Mua ngay</a>
-	            </div>
-              <hr>
-
-              <img src="images\download.png"> <a href="https://1drv.ms/u/c/3c09b97a934d16b2/ET2pn-aPbA5NjWWLUJEOT9IBVC-WkDoMcAbqBbuZAoHWtA?e=KBQ2mM" target="_blank" <strong><span class="subheading">Tải xuống</span></strong>  </a> > 
-              
-	          </div>
-	        </div>
-	        
-         <!-- <div class="col-md-3 ftco-animate">-->
-	        <!--  <div class="block-7">-->
-	        <!--    <div class="text-center">-->
-	        <!--    <h2 class="heading">Share Groups 2.3</h2>-->
-	          
-	        <!--    <h3 class="heading-2 mb-3">Bảng giá</h3>-->
-	        <!--    <hr>-->
-	        <!--    <ul class="pricing-text">-->
-	        <!--      <li><strong>1 Tháng:</strong> 1.000.000 <sup>đ</sup></li>-->
-         <!--       <li><strong>3 Tháng:</strong> 2.300.000 <sup>đ</sup></li>-->
-               
-	        <!--    </ul>-->
-         <!--     <hr>-->
-         <!--     <a href="https://fsmua.net/" target="_blank" class="btn btn-primary d-block px-3 py-3 mb-4">Mua ngay</a>-->
-	        <!--    </div>-->
-         <!--     <hr>-->
-
-         <!--     <img src="images\download.png"> <a href="https://1drv.ms/u/c/3c09b97a934d16b2/EUBSqAmN9itBjBhmBnJW4FoB2FkHi_hW9w5kcl7yiXyr7g?e=LgNt3L" target="_blank" <strong><span class="subheading">Tải xuống</span></strong>  </a> > -->
-              
-	        <!--  </div>-->
-	        <!--</div>-->
-	        
-	        
-          <div class="col-md-3 ftco-animate">
-	          <div class="block-7">
-	            <div class="text-center">
-	            <h2 class="heading">Share TKQC 2.7</h2>
-	          
-	            <h3 class="heading-2 mb-3">Bảng giá</h3>
-	            <hr>
-	            <ul class="pricing-text">
-	              <li><strong>1 Tháng:</strong> 1.200.000 <sup>đ</sup></li>
-                <li><strong>3 Tháng:</strong> 2.500.000 <sup>đ</sup></li>
-                
-	            </ul>
-              <hr>
-              <a href="https://fsmua.net/" target="_blank" class="btn btn-primary d-block px-3 py-3 mb-4">Mua ngay</a>
-	            </div>
-              <hr>
-
-              <img src="images\download.png"> <a href="https://1drv.ms/u/c/3c09b97a934d16b2/EWHtT8yGPRhGvmT57w-pCxwBOLsyY3qSrnROhbKURX7FIg?e=avWqkb"  target="_blank" <strong><span class="subheading">Tải xuống</span></strong>  </a> > 
-              
-	          </div>
-	        </div>
-          <div class="col-md-3 ftco-animate">
-	          <div class="block-7">
-	            <div class="text-center">
-	            <h2 class="heading">XMDT 2.9</h2>
-	          
-	            <h3 class="heading-2 mb-3">Bảng giá</h3>
-	            <hr>
-	            <ul class="pricing-text">
-	              <li><strong>1 Tháng:</strong> 1.500.000 <sup>đ</sup></li>
-                <li><strong>3 Tháng:</strong> 3.700.000 <sup>đ</sup></li>
-               
-	            </ul>
-              <hr>
-              <a href="https://fsmua.net/" target="_blank" class="btn btn-primary d-block px-3 py-3 mb-4">Mua ngay</a>
-	            </div>
-              <hr>
-
-              <img src="images\download.png"> <a href="https://1drv.ms/u/c/3c09b97a934d16b2/EdWuwXsOl9RBjV9uxBeVehgBKNKm5PObV7AubpzPQEIjGw?e=Lkp5eP"  target="_blank" <strong><span class="subheading">Tải xuống</span></strong>  </a> > 
-              
-	          </div>
-	        </div>
-          <div class="col-md-3 ftco-animate">
-	          <div class="block-7">
-	            <div class="text-center">
-	            <h2 class="heading">Unlock 282 2.7</h2>
-	          
-	            <h3 class="heading-2 mb-3">Bảng giá</h3>
-	            <hr>
-	            <ul class="pricing-text">
-	              <li><strong>1 Tháng:</strong> 1.000.000 <sup>đ</sup></li>
-                <li><strong>3 Tháng:</strong> 2.300.000 <sup>đ</sup></li>
-               
-	            </ul>
-              <hr>
-              <a href="https://fsmua.net/" target="_blank" class="btn btn-primary d-block px-3 py-3 mb-4">Mua ngay</a>
-	            </div>
-              <hr>
-
-              <img src="images\download.png"> <a href="https://1drv.ms/u/c/3c09b97a934d16b2/EQnZWhqIS2RLmpEKpCJwlYgB0-IUsBMdpc322XCyOgP5bw?e=XJXi9u" target="_blank" <strong><span class="subheading">Tải xuống</span></strong>  </a> > 
-              
-	          </div>
-	        </div>
-
-          <div class="col-md-3 ftco-animate">
-	          <div class="block-7">
-	            <div class="text-center">
-	            <h2 class="heading">Check limit ADS 2.7</h2>
-	          
-	            <h3 class="heading-2 mb-3">Bảng giá</h3>
-	            <hr>
-	            <ul class="pricing-text">
-
-	              <li><strong>1 Tháng:</strong> 1.000.000 <sup>đ</sup></li>
-                <li><strong>3 Tháng:</strong> 2.300.000 <sup>đ</sup></li>
-               
-	            </ul>
-              <hr>
-              <a href="https://fsmua.net/" target="_blank" class="btn btn-primary d-block px-3 py-3 mb-4">Mua ngay</a>
-	            </div>
-              <hr>
-
-              <img src="images\download.png"> <a href="https://1drv.ms/u/c/3c09b97a934d16b2/EfjYQYIoXMBCi9_zx0IxggcBxUTbUCZi3NoSljAEw5FRQw?e=0TlfN4"  target="_blank" <strong><span class="subheading">Tải xuống</span></strong>  </a> > 
-              
-	          </div>
-	        </div>
-
-	        </div>
-	      </div>
-    	</div>
-
-   <hr>
-   
-      <div  class="container">
-    		<div id="congdung" class="row justify-content-center mb-5">
-          <div  class="col-md-7 text-center heading-section ftco-animate">
-            <h2  class="mb-4">Với toolmmo có thể làm được những gì?</h2>
-          </div>
-        </div>
-    		<div class="row">
-    			<div class="col-md-12">
-    				<div id="accordion">
-    					<div class="row">
-    						<div class="col-md-6">
-    							<div class="card">
-						        <div class="card-header">
-										  <a class="card-link" data-toggle="collapse"  href="#menu_qc" aria-expanded="false" aria-controls="menutwo">Giải pháp Quảng Cáo<span class="collapsed"><i class="icon-plus-circle"></i></span><span class="expanded"><i class="icon-minus-circle"></i></span></a>
-						        </div>
-						        <div id="menu_qc" class="collapse">
-						          <div class="card-body">
-												<p>+ Quản lý TKQC, hiển thị đầy đủ thông tin TKQC.</p>
-                        <p>+ Quảng cáo tự động.</p>
-                        <p>+ Quản lý chiến dịch Quảng Cáo.</p>
-                        <p>+ Bật, tắt, xóa và nhân nhóm Quảng Cáo.</p>
-                        <p>+ Đổi thông tin TKQC (Các thị trường khác nhau sẽ cần phải có TKQC phù hợp về múi giờ, tiền tệ, thậm chí lả cả thông tin doanh nghiệp sở hữu tài khoản đó. Tuy nhiên nếu đổi info của từng tài khoản một thì mất quá nhiều thời gian.)</p>	
-                        <p>+ Kiểm tra tình trạng Quảng Cáo. </p>
-						          </div>
-						        </div>
-						      </div>
-
-						      <div class="card">
-						        <div class="card-header">
-										  <a class="card-link" data-toggle="collapse"  href="#menu_regbm" aria-expanded="false" aria-controls="menutwo">Giải pháp tạo BM<span class="collapsed"><i class="icon-plus-circle"></i></span><span class="expanded"><i class="icon-minus-circle"></i></span></a>
-						        </div>
-						        <div id="menu_regbm" class="collapse">
-						          <div class="card-body">
-                        <p>+ Tạo BM và nhận BM.</p>	
-                        <p>+ Kháng BM.</p>
-                        <p>+ Quản lý BM.</p>			         
-                       </div>
-						        </div>
-						      </div>
-
-
-                 
-                  
-
-						      <div class="card">
-						        <div class="card-header">
-										  <a class="card-link" data-toggle="collapse"  href="#menu_regpage" aria-expanded="false" aria-controls="menu3">Giải pháp tạo Page<span class="collapsed"><i class="icon-plus-circle"></i></span><span class="expanded"><i class="icon-minus-circle"></i></span></a>
-						        </div>
-						        <div id="menu_regpage" class="collapse">
-						          <div class="card-body">
-                        <p>+ Tạo Page, share Page.</p>
-                        <p>+ Thêm Page vào BM.</p>	
-                        <p>+ Quản lý Page.</p>
-                        <p>+ Kháng Page.</p>						          
-                      </div>
-						        </div>
-						      </div>
-
-
-                  <div class="card">
-						        <div class="card-header">
-										  <a class="card-link" data-toggle="collapse"  href="#menu_sharetk" aria-expanded="false" aria-controls="menu3">Giải pháp share TKQC<span class="collapsed"><i class="icon-plus-circle"></i></span><span class="expanded"><i class="icon-minus-circle"></i></span></a>
-						        </div>
-						        <div id="menu_sharetk" class="collapse">
-						          <div class="card-body">
-                        <p>+ Share TKQC vào BM để phòng tránh rủi ro hạn chế Quảng Cáo.</p>
-                        <p>+ Đổi thông tin TKQC (Các thị trường khác nhau sẽ cần phải có TKQC phù hợp về múi giờ, tiền tệ, thậm chí lả cả thông tin doanh nghiệp sở hữu tài khoản đó. Tuy nhiên nếu đổi info của từng tài khoản một thì mất quá nhiều thời gian.)</p>	
-                       			          
-                      </div>
-						        </div>
-						      </div>
-
-
-    						</div>
-
-
-
-    						<div class="col-md-6">
-    							<!--<div class="card">-->
-						     <!--   <div class="card-header">-->
-										 <!-- <a class="card-link" data-toggle="collapse"  href="#menu4" aria-expanded="false" aria-controls="menu4">Giải pháp Chia sẻ lên nhóm<span class="collapsed"><i class="icon-plus-circle"></i></span><span class="expanded"><i class="icon-minus-circle"></i></span></a>-->
-						     <!--   </div>-->
-						     <!--   <div id="menu4" class="collapse">-->
-						     <!--     <div class="card-body">-->
-
-           <!--             <p>+ Chia sẻ bài viết lên nhóm.</p>-->
-           <!--             <p>+ Bình luận vào nhóm.</p>	-->
-           <!--             <p>+ Gửi yêu cầu tham gia nhóm.</p>						          -->
-           <!--           </div>-->
-						     <!--   </div>-->
-						     <!-- </div>-->
-
-						      <div class="card">
-						        <div class="card-header">
-										  <a class="card-link" data-toggle="collapse"  href="#menu5" aria-expanded="false" aria-controls="menu5">Giải pháp XMDT<span class="collapsed"><i class="icon-plus-circle"></i></span><span class="expanded"><i class="icon-minus-circle"></i></span></a>
-						        </div>
-						        <div id="menu5" class="collapse">
-						          <div class="card-body">
-
-                        <p>+ Gửi kháng nghị XMDT cho tài khoản bị hạn chế Quảng Cáo, yêu cầu xem xét lại do nhầm lẫn.</p>
-                        <p>+ Gửi kháng nghị XMDT cho BM bị hạn chế Quảng Cáo, yêu cầu xem xét lại do nhầm lẫn.</p>
-                        <p>+ Kiểm tra tình trạng XMDT.</p>
-                        
-                      </div>
-						        </div>
-						      </div>
-
-						      <div class="card">
-						        <div class="card-header">
-										  <a class="card-link" data-toggle="collapse"  href="#menu6" aria-expanded="false" aria-controls="menu6">Giải pháp gửi kháng 282<span class="collapsed"><i class="icon-plus-circle"></i></span><span class="expanded"><i class="icon-minus-circle"></i></span></a>
-						        </div>
-						        <div id="menu6" class="collapse">
-						          <div class="card-body">
-
-                         <p>+ Gửi kháng nghị xác minh cho tài khoản bị checkpoint 282. Yêu cầu xem xét lại do nhầm lẫn.</p> 			
-                         <p>+ Kiểm tra tình trạng kháng nghị.</p>
-
-                      </div>
-						        </div>
-						      </div>
-
-
-
-
-                 
-
-
-                  
-                  
-    						</div>
-    					</div>
-				    </div>
-    			</div>
-    		</div>
-    	</div>
-
-    </section>
-    
-    
-    
-
-
-
-
-    
-
-    <section class="ftco-section testimony-section bg-light">
-      <div class="container">
-        <div class="row justify-content-center mb-5 pb-5">
-          <div class="col-md-7 text-center heading-section ftco-animate">
-           
-            <h2 class="mb-4">Khách hàng của toolmmo nói gì ?</h2>
-          </div>
-        </div>
-        <div class="row ftco-animate">
-          <div class="col-md-12">
-            <div class="carousel-testimony owl-carousel ftco-owl">
-              <div class="item">
-                <div class="testimony-wrap p-4 pb-5">
-                  <div class="user-img mb-5" style="background-image: url(images/person_1.jpg)">
-                    <span class="quote d-flex align-items-center justify-content-center">
-                      <i class="icon-quote-left"></i>
-                    </span>
-                  </div>
-                  <div class="text">
-                    <p class="mb-5">Tuyệt thật, từ ngày dùng giải pháp Phần Mềm bên này mình cảm thấy công việc thật nhàn.</p>
-                    <p class="name">Bùi Ngọc Mỹ Hà</p>
-                    <span class="position">Nhân viên Marketing</span>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="testimony-wrap p-4 pb-5">
-                  <div class="user-img mb-5" style="background-image: url(images/person_2.png)">
-                    <span class="quote d-flex align-items-center justify-content-center">
-                      <i class="icon-quote-left"></i>
-                    </span>
-                  </div>
-                  <div class="text">
-                    <p class="mb-5">Rất dễ sử dụng, người không rành máy tính như mình cũng chỉ mất một lúc là sử dụng thành thạo. Perfect 👍</p>
-                    <p class="name">Lê Thị Hằng</p>
-                    <span class="position">Nhân viên Marketing</span>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="testimony-wrap p-4 pb-5">
-                  <div class="user-img mb-5" style="background-image: url(images/person_3.jpg)">
-                    <span class="quote d-flex align-items-center justify-content-center">
-                      <i class="icon-quote-left"></i>
-                    </span>
-                  </div>
-                  <div class="text">
-                    <p class="mb-5">Mình tiếp cận được nhiều khách hàng hơn nhờ dùng giải pháp chia sẽ lên nhóm.</p>
-                    <p class="name">Bùi Thị Huyền Trang</p>
-                    <span class="position">Freelancer bán hàng</span>
-                  </div>
-                </div>
-              </div>
-              
-
-              <div class="item">
-                <div class="testimony-wrap p-4 pb-5">
-                  <div class="user-img mb-5" style="background-image: url(images/person_4.jpg)">
-                    <span class="quote d-flex align-items-center justify-content-center">
-                      <i class="icon-quote-left"></i>
-                    </span>
-                  </div>
-                  <div class="text">
-                    <p class="mb-5">Team mình đã tiết kiệm được 60% thời gian nhờ sử dụng giải pháp. Nói chung ngon bổ rẻ.</p>
-                    <p class="name">Lê Hồng Quân</p>
-                    <span class="position">Trưởng phòng Marketing</span>
-                  </div>
-                </div>
-              </div>
-
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    
-
-    
-    
-
-    <footer class="ftco-footer ftco-bg-dark ftco-section">
-      <div class="container">
-        <div class="row mb-5">
-          <div class="col-md">
-            <div class="ftco-footer-widget mb-4">
-              <h2 class="ftco-heading-2">Hợp tác</h2>
-              <p>Liên hệ để trở thành cộng tác viên.</p>
-              <p class="mt-4"><a href="https://t.me/" target="_blank" class="btn btn-primary p-3">Kết nối</a></p>
-            </div>
-          </div>
-          <div class="col-md">
-            <div class="ftco-footer-widget mb-4 ml-md-5">
-              <h2 class="ftco-heading-2">Chính sách</h2>
-              <ul class="list-unstyled">
-                <li><a href="" class="py-2 d-block">Chính sách bảo mật</a></li>
-                <li><a href="" class="py-2 d-block">Chính sách Affiliate</a></li>
-              
-              </ul>
-            </div>
-          </div>
-          <div class="col-md">
-             <div class="ftco-footer-widget mb-4">
-              <h2 class="ftco-heading-2">Cộng đồng</h2>
-              <ul class="list-unstyled">
-                <li><a href="" class="py-2 d-block">Trợ giúp</a></li>
-                <li><a href="" class="py-2 d-block">Giải pháp bán hàng</a></li>
-               
-              </ul>
-            </div>
-          </div>
-          <div class="col-md">
-            <div class="ftco-footer-widget mb-4">
-            	<div class="block-23 mb-3">
-	              <ul>
-	                <li><span class="icon icon-map-marker"></span><span class="text">Hà Nội</span></li>
-	               
-	                <li><span class="icon icon-clock-o"></span><span class="text">Hỗ trợ 24/24 giờ</span></li>
-	              </ul>
-	            </div>
-              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
-                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12 text-center">
-
-            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;  <i class="icon-heart" aria-hidden="true"></i> by toolmmo
-  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-          </div>
-        </div>
-      </div>
-    </footer>
-    
-  
-
-  <!-- loader -->
-  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
-
-
-  <script src="js/jquery.min.js"></script>
-  <script src="js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/jquery.easing.1.3.js"></script>
-  <script src="js/jquery.waypoints.min.js"></script>
-  <script src="js/jquery.stellar.min.js"></script>
-  <script src="js/owl.carousel.min.js"></script>
-  <script src="js/jquery.magnific-popup.min.js"></script>
-  <script src="js/aos.js"></script>
-  <script src="js/jquery.animateNumber.min.js"></script>
-  <script src="js/bootstrap-datepicker.js"></script>
-  <script src="js/jquery.timepicker.min.js"></script>
-  <script src="js/scrollax.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="js/google-map.js"></script>
-  <script src="js/main.js"></script>
-    
-  </body>
+    <footer>© 2025 Công cụ xử lý văn bản</footer>
+  </div>
+</body>
 </html>

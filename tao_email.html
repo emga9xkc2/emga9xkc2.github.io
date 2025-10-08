@@ -1,0 +1,125 @@
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Email Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        input,
+        button,
+        textarea {
+            margin: 5px 0;
+            padding: 8px;
+            width: 300px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Tool Gen Email</h2>
+    <label>Đầu email:</label><br>
+    <input type="text" id="prefix" placeholder="Ví dụ: user"><br>
+
+    <label>Đuôi email:</label><br>
+    <input type="text" id="suffix" placeholder="@gmail.com"><br>
+
+    <label>Mật khẩu:</label><br>
+    <input type="text" id="password" placeholder="abc123"><br>
+
+    <label>Số lượng:</label><br>
+    <input type="number" id="amount" min="1" value="5"><br><br>
+
+    <button onclick="generateEmails()">Gen</button>
+
+    <h3>Kết quả:</h3>
+    <textarea id="result" readonly=""></textarea>
+
+    <script>
+
+        const hoList = ["Nguyễn", "Phạm", "Hoàng", "Phan", "Vũ", "Đặng", "Hồ", "Lý", "Tô", "Cao", "Quách", "La", "Lâm", "Châu", "Mai", "Thái", "Vi", "Mạc", "Vương", "Trương", "Lương", "Chu", "Tôn"];
+        const midList = ["Văn", "Thị", "Ngọc", "Minh", "Đức", "Quốc", "Nhật", "Thanh", "Bảo", "Hải", "Khai", "Trung", "Kim", "Hữu", "Gia", "Tuấn", "Hạnh", "Mạnh", "Xuân", "An"];
+        const tenList = ["Anh", "Bảo", "Chi", "Dương", "Hà", "Hùng", "Khoa", "Khôi", "Linh", "Long", "Minh", "Nam", "Ngân", "Ngọc", "Phúc", "Quân", "Sơn", "Thảo", "Trang", "Vi"];
+
+        const syllables = [
+            "an", "el", "ar", "ma", "la", "li", "ka", "jo", "sa", "ro", "mi", "ri", "na", "le", "do", "ta", "ni",
+            "lo", "ki", "mo", "ra", "se", "ve", "za", "ne", "tu", "ke", "vi", "xi", "po", "lu", "fo", "go", "ha",
+            "ju", "te", "zo", "pi", "chi", "ya", "me", "ku", "shi", "no", "hi", "ti", "wa", "ru", "su", "ze",
+            "bo", "fi", "gu", "mu", "di", "ho", "va", "qa", "be", "ce", "ge", "hu", "qu"
+        ];
+
+        function randItem(arr) {
+            return arr[Math.floor(Math.random() * arr.length)];
+        }
+
+        function randSyllableName() {
+            return randItem(syllables) + randItem(syllables);
+        }
+        function removeVietnameseTones(str) {
+            return str
+                .normalize("NFD")                 // tách chữ + dấu
+                .replace(/[\u0300-\u036f]/g, "")  // xóa dấu
+                .replace(/đ/g, "d")               // thay đ -> d
+                .replace(/Đ/g, "D");              // thay Đ -> D
+        }
+
+        function randFullName() {
+            let ho = randItem(hoList);
+            let mid = randItem(midList);
+            let ten = randItem(tenList);
+            let syllName = randSyllableName();
+
+            // 3 mẫu:
+            let pattern = Math.floor(Math.random() * 3);
+            let str = "";
+            if (pattern === 0) str = ho + "" + ten;          // Họ + Tên
+            if (pattern === 1) str = ho + "" + mid;          // Họ + Đệm
+            if (pattern === 2) str = mid + "" + ten;         // Đệm + Tên
+            str = removeVietnameseTones(str) + randSyllableName();
+            str = str.toLowerCase();
+            return str;                        // Họ + 2 âm tiết
+        }
+        function randomString(length) {
+            let chars = "abcdefghijklmnopqrstuvwxyz";
+            let str = "";
+            for (let i = 0; i < length; i++) {
+                str += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return str;
+        }
+
+        function generateEmails() {
+            let prefix = document.getElementById("prefix").value;
+            let suffix = document.getElementById("suffix").value;
+            if (suffix == "") {
+                suffix = "@gmail.com"; // Default suffix if not provided
+            }
+            let password = document.getElementById("password").value;
+            let amount = parseInt(document.getElementById("amount").value);
+            let result = "";
+
+            for (let i = 0; i < amount; i++) {
+                let randomUser = randFullName();
+                let randomPass = password;
+                if (randomPass == "") {
+                    randomPass = randomString(8);
+                }
+                result += randomUser + suffix + "|" + randomPass + "|" + "\n";
+            }
+
+            document.getElementById("result").value = result;
+        }
+    </script>
+
+
+</body>
+
+</html>
