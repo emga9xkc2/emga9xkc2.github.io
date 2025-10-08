@@ -18,6 +18,13 @@
       border-radius: 6px;
       border: 1px solid #ccc;
     }
+    .row {
+      display: flex;
+      gap: 10px;
+    }
+    .row input {
+      flex: 1;
+    }
     button {
       margin-top: 10px;
       margin-right: 5px;
@@ -43,11 +50,16 @@
 <body>
   <h2>Tách cột dữ liệu</h2>
 
-  <label>Nhập dữ liệu (mỗi dòng một bản ghi, các cột cách nhau bằng tab hoặc khoảng trắng):</label>
+  <label>Nhập dữ liệu (mỗi dòng một bản ghi, các cột cách nhau bằng tab):</label>
   <textarea id="inputData" rows="6" placeholder="VD: thai@gmail.com	TIBRQwocpk	thaitege@hotmail.com	29-08-2025 12:06:32	vi	390	mailvn_envi	954007"></textarea>
 
   <label>Nhập các số thứ tự cột muốn giữ lại (cách nhau bằng dấu cách, ví dụ: 1 3 4 — để trống sẽ mặc định 1 2 3):</label>
   <input id="columns" type="text" placeholder="1 2 3">
+
+  <div class="row">
+    <input id="startLine" type="number" placeholder="Dòng đầu (mặc định 0)">
+    <input id="endLine" type="number" placeholder="Dòng cuối (mặc định 0)">
+  </div>
 
   <div>
     <button onclick="splitColumns()">Tách cột</button>
@@ -62,11 +74,16 @@
     function splitColumns() {
       const input = document.getElementById("inputData").value.trim();
       const colInput = document.getElementById("columns").value.trim();
+      const startLine = parseInt(document.getElementById("startLine").value || "0");
+      const endLine = parseInt(document.getElementById("endLine").value || Number.MAX_SAFE_INTEGER);
       const cols = (colInput ? colInput.split(/\s+/) : ["1", "2", "3"]).map(n => parseInt(n) - 1);
 
       const lines = input.split(/\r?\n/);
-      const result = lines.map(line => {
-        const parts = line.split(/\t| +/).filter(x => x !== "");
+      const slicedLines = lines.slice(startLine > 0 ? startLine - 1 : 0, endLine);
+
+      const result = slicedLines.map(line => {
+        // 🔹 Chỉ tách theo tab, KHÔNG tách theo khoảng trắng
+        const parts = line.split("\t");
         return cols.map(i => parts[i] || "").join("\t");
       }).join("\n");
 
