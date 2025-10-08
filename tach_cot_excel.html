@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Tách cột dữ liệu</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      background: #f9f9f9;
+    }
+    textarea, input {
+      width: 100%;
+      margin-top: 10px;
+      padding: 8px;
+      font-size: 14px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    button {
+      margin-top: 10px;
+      margin-right: 5px;
+      padding: 10px 15px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    pre {
+      background: #eee;
+      padding: 10px;
+      border-radius: 6px;
+      white-space: pre-wrap;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Tách cột dữ liệu</h2>
+
+  <label>Nhập dữ liệu (mỗi dòng một bản ghi, các cột cách nhau bằng tab hoặc khoảng trắng):</label>
+  <textarea id="inputData" rows="6" placeholder="VD: thai@gmail.com	TIBRQwocpk	thaitege@hotmail.com	29-08-2025 12:06:32	vi	390	mailvn_envi	954007"></textarea>
+
+  <label>Nhập các số thứ tự cột muốn giữ lại (cách nhau bằng dấu cách, ví dụ: 1 3 4 — để trống sẽ mặc định 1 2 3):</label>
+  <input id="columns" type="text" placeholder="1 2 3">
+
+  <div>
+    <button onclick="splitColumns()">Tách cột</button>
+    <button onclick="copyData()">Copy kết quả</button>
+    <button onclick="exportExcel()">Xuất Excel</button>
+  </div>
+
+  <h3>Kết quả:</h3>
+  <pre id="output"></pre>
+
+  <script>
+    function splitColumns() {
+      const input = document.getElementById("inputData").value.trim();
+      const colInput = document.getElementById("columns").value.trim();
+      const cols = (colInput ? colInput.split(/\s+/) : ["1", "2", "3"]).map(n => parseInt(n) - 1);
+
+      const lines = input.split(/\r?\n/);
+      const result = lines.map(line => {
+        const parts = line.split(/\t| +/).filter(x => x !== "");
+        return cols.map(i => parts[i] || "").join("\t");
+      }).join("\n");
+
+      document.getElementById("output").textContent = result;
+    }
+
+    function copyData() {
+      const text = document.getElementById("output").textContent;
+      if (!text) {
+        alert("Không có dữ liệu để copy!");
+        return;
+      }
+      navigator.clipboard.writeText(text)
+        .then(() => alert("✅ Đã copy kết quả vào clipboard!"))
+        .catch(err => alert("❌ Lỗi copy: " + err));
+    }
+
+    function exportExcel() {
+      const text = document.getElementById("output").textContent.trim();
+      if (!text) {
+        alert("Không có dữ liệu để xuất Excel!");
+        return;
+      }
+      const rows = text.split("\n").map(line => line.split("\t"));
+      const wb = XLSX.utils.book_new();
+      const ws = XLSX.utils.aoa_to_sheet(rows);
+      XLSX.utils.book_append_sheet(wb, ws, "Kết quả");
+      XLSX.writeFile(wb, "ket_qua.xlsx");
+    }
+  </script>
+</body>
+</html>
