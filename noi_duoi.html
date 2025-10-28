@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Nối đuôi email tự động</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 20px;
+      border-radius: 12px;
+      background: #f8f9fa;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    textarea, input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      margin-top: 8px;
+      margin-bottom: 12px;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+    button {
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      margin-right: 10px;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    h2, h3 {
+      text-align: center;
+    }
+    .actions {
+      text-align: center;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Nối đuôi email tự động</h2>
+  
+  <label for="inputText">Nhập danh sách (mỗi dòng một mục):</label>
+  <textarea id="inputText" rows="6" placeholder="Ví dụ:
+abcjdasafa
+akhdjjsahdas@gmail.com
+jwhqejhwqjewq@yahoo.com"></textarea>
+
+  <label for="suffix">Đuôi cần nối (ví dụ: @gmail.com):</label>
+  <input type="text" id="suffix" value="@gmail.com">
+
+  <div class="actions">
+    <button onclick="appendSuffix()">Xử lý</button>
+    <button id="copyBtn" onclick="copyOutput()" disabled>Sao chép kết quả</button>
+  </div>
+
+  <h3>Kết quả:</h3>
+  <textarea id="output" rows="6" readonly placeholder="Kết quả sẽ hiển thị tại đây..."></textarea>
+
+  <script>
+    function appendSuffix() {
+      const input = document.getElementById("inputText").value.trim();
+      const suffix = document.getElementById("suffix").value.trim();
+      const output = document.getElementById("output");
+      const copyBtn = document.getElementById("copyBtn");
+
+      if (!input) {
+        alert("Vui lòng nhập nội dung!");
+        return;
+      }
+      if (!suffix) {
+        alert("Vui lòng nhập đuôi cần nối!");
+        return;
+      }
+
+      const lines = input.split(/\r?\n/).map(line => line.trim());
+      const result = lines.map(line => 
+        line.endsWith(suffix) ? line : line + suffix
+      );
+
+      output.value = result.join("\n");
+      copyBtn.disabled = false;
+    }
+
+    function copyOutput() {
+      const output = document.getElementById("output");
+      output.select();
+      document.execCommand("copy");
+      alert("✅ Đã sao chép kết quả vào clipboard!");
+    }
+  </script>
+</body>
+</html>
